@@ -21,7 +21,7 @@ const AuthNav = () => {
         activeClassName="activNavigationLink"
         exact
       >
-        Sing In
+        Sing Up
       </NavLink>
     </AuthNavStyled>
   );

@@ -1,9 +1,10 @@
 /** @format */
 
 import React from "react";
+import { HomeStyled } from "./HomeStyled";
 
 const Home = () => {
-  return <h2>Home</h2>;
+  return <HomeStyled>welcome to the phone book</HomeStyled>;
 };
 
 export default Home;

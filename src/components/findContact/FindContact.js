@@ -13,12 +13,12 @@ const FindContact = ({ filterContacts, filter }) => {
 
   return (
     <DivFindContact>
-      Find Contsct by Name:
       <input
         type="text"
         value={filter}
         name="filter"
         autoComplete="off"
+        className="form-input"
         onChange={onHandleChange}
       />
     </DivFindContact>

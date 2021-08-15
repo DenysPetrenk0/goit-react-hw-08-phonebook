@@ -13,16 +13,13 @@ import {
   getContactSuccess,
 } from "../actions/contactsAction";
 
-axios.defaults.baseURL = "http://localhost:1111";
-
 export const getContactOperation = () => async (dispatch) => {
   dispatch(getContactRequest());
-
   try {
     const { data } = await axios.get("/contacts");
     dispatch(getContactSuccess(data));
   } catch (error) {
-    dispatch(getContactError(error));
+    dispatch(getContactError(error.message));
   }
 };
 
@@ -32,7 +29,7 @@ export const addContactOperation = (contact) => async (dispatch) => {
     const { data } = await axios.post("/contacts", contact);
     dispatch(addContactSuccess(data));
   } catch (error) {
-    dispatch(addContactError(error));
+    dispatch(addContactError(error.message));
   }
 };
 
@@ -42,6 +39,6 @@ export const deleteContactOperation = (id) => async (dispatch) => {
     await axios.delete(`/contacts/${id}`);
     dispatch(deleteContactSuccess(id));
   } catch (error) {
-    dispatch(deleteContactError(error));
+    dispatch(deleteContactError(error.message));
   }
 };

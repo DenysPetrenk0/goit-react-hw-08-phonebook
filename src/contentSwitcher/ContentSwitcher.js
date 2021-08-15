@@ -1,21 +1,28 @@
 /** @format */
 
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import { Switch } from "react-router-dom";
+import { getIsAuthenticated } from "../redux/selectors/contactsSelectors";
+import PriverRoutes from "../routes/PriverRoutes";
+import PublicRoutes from "../routes/PublicRoutes";
 
-const ContentSwitcher = ({ routes, path = "" }) => {
+const ContentSwitcher = ({ routes, isAuth }) => {
   return (
     <Switch>
-      {routes.map((route) => (
-        <Route
-          path={path + route.path}
-          component={route.component}
-          exact={route.exact}
-          key={route.path}
-        />
-      ))}
+      {routes.map((route) =>
+        route.isPrived ? (
+          <PriverRoutes {...route} key={route.path} isAuth={isAuth} />
+        ) : (
+          <PublicRoutes {...route} key={route.path} isAuth={isAuth} />
+        )
+      )}
     </Switch>
   );
 };
 
-export default ContentSwitcher;
+const mapStateToProps = (state) => ({
+  isAuth: getIsAuthenticated(state),
+});
+
+export default connect(mapStateToProps)(ContentSwitcher);

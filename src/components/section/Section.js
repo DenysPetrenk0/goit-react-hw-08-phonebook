@@ -1,13 +1,14 @@
 /** @format */
 
 import React from "react";
+import { SectionStyled } from "./SectionStyled";
 
 const Section = ({ title, children }) => {
   return (
-    <section>
+    <SectionStyled>
       <h2 className="sectionTitle">{title}</h2>
       {children}
-    </section>
+    </SectionStyled>
   );
 };
 

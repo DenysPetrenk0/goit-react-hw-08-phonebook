@@ -1,11 +1,12 @@
 /** @format */
 
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { logIn } from "../../redux/operation/authOperation";
 import { FormStyled } from "../registration/FormStyled";
 
 class Login extends Component {
   state = {
-    name: "",
     email: "",
     password: "",
   };
@@ -16,40 +17,46 @@ class Login extends Component {
   };
 
   handlSubmit = async (event) => {
-    const { name, email, password } = this.state;
+    const { email, password } = this.state;
     event.preventDefault();
+
+    this.props.logIn({ email, password });
+
+    this.setState({ email: "", password: "" });
   };
 
   render() {
+    const { email, password } = this.state;
+
     return (
-      <FormStyled onSubmit={this.handlSubmit}>
+      <FormStyled className="form" onSubmit={this.handlSubmit}>
         <input
-          className="form-input"
-          type="text"
-          name="name"
-          placeholder="name"
-          onChange={this.handlChange}
-        />
-        <input
+          value={email}
           className="form-input"
           type="email"
           name="email"
           placeholder="e-mail"
           onChange={this.handlChange}
+          autoComplete="off"
+          required
         />
         <input
+          value={password}
           className="form-input"
           type="password"
           name="password"
           placeholder="password"
           onChange={this.handlChange}
+          autoComplete="off"
+          required
         />
         <button type="submit" className="form-button">
-          Register
+          Sing In
         </button>
       </FormStyled>
     );
   }
 }
 
-export default Login;
+export default connect(null, { logIn })(Login);
+// export default Login;

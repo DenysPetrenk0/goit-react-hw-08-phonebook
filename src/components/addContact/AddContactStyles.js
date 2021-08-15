@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 
-export const FormStyled = styled.form`
+export const AddContact = styled.form`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -12,7 +12,7 @@ export const FormStyled = styled.form`
     background-color: transparent;
     border: 0;
     height: 45px;
-    width: 520px;
+    width: 420px;
     border-bottom: 1px solid #dcdcdc;
     margin-bottom: 50px;
     padding-left: 10px;

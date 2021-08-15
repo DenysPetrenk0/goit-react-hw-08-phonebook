@@ -1,22 +1,13 @@
 /** @format */
 
 import React from "react";
-import { NavLink } from "react-router-dom";
+import NavigationListItem from "./NavigationListItem";
 
-const Navigation = ({ routes, url = "", prevPathname = "" }) => {
+const Navigation = ({ routes }) => {
   return (
     <ul className="navigationList">
       {routes.map((route) => (
-        <li className="navigationItem" key={route.path}>
-          <NavLink
-            className="navigationLink"
-            activeClassName="activNavigationLink"
-            to={{ pathname: url + route.path, state: { from: prevPathname } }}
-            exact={route.exact}
-          >
-            {route.name}
-          </NavLink>
-        </li>
+        <NavigationListItem {...route} key={route.path} />
       ))}
     </ul>
   );

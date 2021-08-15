@@ -2,34 +2,22 @@
 
 import styled from "styled-components";
 
-export const FormStyled = styled.form`
+export const PhoneBookStyled = styled.li`
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
 
-  .form-input {
-    box-sizing: border-box;
-    background-color: transparent;
-    border: 0;
-    height: 45px;
-    width: 520px;
-    border-bottom: 1px solid #dcdcdc;
-    margin-bottom: 50px;
-    padding-left: 10px;
-    outline: none;
+  .textContact {
+    font-family: Recursive;
+    font-size: 17px;
     color: #ffffff;
-
-    &::placeholder {
-      font-family: Recursive;
-      font-size: 17px;
-      color: #ffffff;
-    }
+    margin-right: 10px;
   }
 
   .form-button {
     font-family: Recursive;
-    width: 250px;
-    height: 60px;
+    width: 100px;
+    height: 40px;
     font-size: 15px;
     border: 1px solid #a67f4e;
     color: #fff;
